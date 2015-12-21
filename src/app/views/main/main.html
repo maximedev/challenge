@@ -1,0 +1,23 @@
+<section layout-fill layout="row">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      <img id="image" class="img-circle" alt="Image" ng-src="{{main.imageSrc}}" />
+    </md-toolbar>
+    <tri-menu  flex></tri-menu>
+  </md-sidenav>
+  <md-content flex>
+    <md-toolbar md-toolbar-shrink>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" hide-gt-md ng-click="main.toggleAside()">
+          <md-icon md-font-icon="ion-navicon-round"></md-icon>
+        </md-button>
+        <span flex></span>
+        <md-button ng-click="main.logout()">
+          Logout
+        </md-button>
+      </div>
+    </md-toolbar>
+    <ui-view></ui-view>
+  </md-content>
+</section>
