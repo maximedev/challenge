@@ -71,7 +71,7 @@ vm.render = function(src){
   var image = new Image();
 
   image.onload = function(){
-   // var canvas = angular.element('#myCanvas'); ne fonctionne pas !!
+   // var canvas = angular.element('#myCanvas'); ne fonctionne pas !!!
    var canvas = document.getElementById("myCanvas");
   
     if(image.height > MAX_HEIGHT) {
