@@ -11,8 +11,7 @@
 
     vm.toggleAside = toggleAside;
     vm.logout = logout;
-    $log.debug(user.me);
-    vm.imageSrc = user.me.image;
+    vm.user = user.me;
     //$scope.$apply();
     
     function toggleAside(){
