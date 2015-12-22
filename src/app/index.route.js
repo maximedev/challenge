@@ -42,6 +42,13 @@
           }
         }
       })
+      .state('twitter', {
+        url: '/twitter',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TwitterController',
+        controllerAs: 'twitter'
+      })
       .state('chart', {
         url: '/chart',
         parent: 'main',
