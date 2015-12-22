@@ -1,7 +1,7 @@
 <section layout-fill layout="row">
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
     <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">Menu</h1>
+      <h1 class="md-toolbar-tools">{{main.user.username}}</h1>
       <img id="image" class="img-circle" alt="Image" ng-src="{{main.user.image}}" />
     </md-toolbar>
     <tri-menu  flex></tri-menu>
