@@ -25,13 +25,18 @@
 
 
     triMenuProvider.addMenu({
+      name: 'Twitter',
+      icon: 'ion-home',
+      type: 'link',
+      state: 'twitter'
+    });
+
+    triMenuProvider.addMenu({
       name: 'Todo',
       icon: 'ion-compose',
       type: 'link',
       state: 'todo'
     });
-
-
 
     triMenuProvider.addMenu({
       name: 'Chart',
