@@ -2,7 +2,7 @@
   <md-tabs md-selected="auth.selectedTab" md-dynamic-height md-border-bottom md-stretch-tabs="always" md-enable-disconnect="true">
     <md-tab label="signin">
       <md-content class="md-padding">
-        <h1 class="md-display-2">Signin</h1>
+        <h1 class="md-display-2">Connexion</h1>
         <form novalidate name="auth.signinForm" ng-submit="auth.signin()">
           <md-input-container class="md-block">
             <label>email</label>
@@ -21,7 +21,7 @@
           </md-input-container>
           <div>
             <md-button type="submit">
-              SignIn
+              Connexion
             </md-button>
           </div>
         </form>
@@ -29,29 +29,36 @@
     </md-tab>
     <md-tab label="signup">
       <md-content class="md-padding">
-        <h1 class="md-display-2">Signup</h1>
+        <h1 class="md-display-2">Inscription</h1>
         <form novalidate name="auth.signupForm" ng-submit="auth.signup()">
           <md-input-container class="md-block">
             <label>email</label>
             <input type="email" md-maxlength="30" required name="email" ng-model="auth.signupUser.email">
-            <div ng-messages="auth.signinForm.email.$error">
-              <div ng-message="required">This is required.</div>
-              <div ng-message="required">Invalid email.</div>
+            <div ng-messages="auth.signupForm.email.$error">
+              <div ng-message="required">L'email est obligatoire</div>
+              <div ng-message="required">L'email est invalide.</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Nom utilisateur</label>
+            <input required type="text" md-maxlength="30"  name="username" ng-model="auth.signupUser.username">
+            <div ng-messages="auth.signupForm.username.$error">
+              <div ng-message="required">Le nom est obligatoire.</div>
             </div>
           </md-input-container>
           <md-input-container class="md-block">
             <label>Mot de passe</label>
-            <input required name="password" ng-model="auth.signupUser.password" >
+            <input required name="password" type="password" ng-model="auth.signupUser.password" >
             <div ng-messages="auth.signupForm.password.$error">
-              <div ng-message="required">Password is required.</div>
+              <div ng-message="required">Le mot de passe est obligatoire.</div>
             </div>
           </md-input-container>
           <md-input-container class="md-block">
             <label>Confirmation de votre mot de passe</label>
-            <input required name="password" ng-model="auth.signupUser.confirmPassword" compare-to="auth.signupUser.password">
+            <input required name="password" type="password" ng-model="auth.signupUser.confirmPassword" compare-to="auth.signupUser.password">
             <div ng-messages="auth.signupForm.password.$error">
-              <div ng-message="required">Password is required.</div>
-              <div ng-message="compareTo">Password are not identical.</div>
+              <div ng-message="required">La confirmation du mot de passe est obligatoire.</div>
+              <div ng-message="compareTo">Le mot de passe n'est pas identique</div>
             </div>
           </md-input-container>
           <md-input-container class="md-block">
@@ -61,7 +68,7 @@
           </md-input-container>
           <div>
             <md-button type="submit">
-              SignUp
+              Valider
             </md-button>
           </div>
         </form>
