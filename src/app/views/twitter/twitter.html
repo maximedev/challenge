@@ -1,0 +1,26 @@
+<form novalidate name="twitter.formTwitter" ng-submit="twitter.submitForm(twitter.todo)">
+	<md-input-container class="md-block">
+		<div layout="row" layout-wrap>
+			<div flex="66">
+				<label >Message</label>
+				<input type="texte" md-maxlength="30" required name="message" ng-model="twitter.todo.message">
+				<div ng-messages="twitter.todo.message.$error">
+					<div ng-message="required">Le messagee est obligatoire</div>
+				</div>
+			</div>
+			<div flex="33">
+				<img src="/assets/images/default128.png">
+			</div>
+		</div>
+		<div layout="row" layout-wrap>
+			<div flex="100">
+				<md-button >
+				<md-icon md-font-icon="ion-android-add"></md-icon>
+				</md-button>
+				<md-button type="submit" >
+				<md-icon md-font-icon="ion-android-send"></md-icon>
+				</md-button>
+			</div>
+		</div>
+	</md-input-container>
+</form>
