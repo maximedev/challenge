@@ -6,7 +6,7 @@
     .controller('AuthController', AuthController);
 
   /** @ngInject */
-  function AuthController($scope,$auth,$state,$http,$log,toastr,user) {
+  function AuthController($scope,$auth,$state,$http,$log,$document,toastr,user) {
     var vm = this;
     vm.selectedTab = 1;
 
@@ -27,7 +27,7 @@
 
     vm.signup = function(){
       if(vm.signupForm.$valid){
-        var canvas = document.getElementById("myCanvas");
+      var canvas = $document[0].getElementById('canvasPhoto');
         vm.signupUser.image = canvas.toDataURL();
 
         $log.debug(vm.signupUser);
@@ -46,9 +46,7 @@
   vm.src  = "assets/images/default128.png";
 
   vm.choisirPhoto = function(){
-   //Angular element ne fonctionne pas pour simuler un click, on passe donc directement par le javascript natif 
-   //angular.element($document.querySelector('#triggerInput')).trigger('click');
-     document.getElementById('triggerInput').click();
+     $document[0].getElementById('triggerInput').click();
     };
 
   vm.setFile = function(element) {
@@ -71,8 +69,9 @@ vm.render = function(src){
   var image = new Image();
 
   image.onload = function(){
-   // var canvas = angular.element('#myCanvas'); ne fonctionne pas !!!
-   var canvas = document.getElementById("myCanvas");
+
+    $log.debug($document);
+    var canvas = $document[0].getElementById('canvasPhoto');
   
     if(image.height > MAX_HEIGHT) {
       image.width *= MAX_HEIGHT / image.height;
