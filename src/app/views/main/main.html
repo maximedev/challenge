@@ -2,7 +2,9 @@
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
     <md-toolbar class="md-theme-indigo">
       <h1 class="md-toolbar-tools">{{main.user.username}}</h1>
-      <img id="image" class="img-circle" alt="Image" ng-src="{{main.user.image}}" />
+       <md-button class="img-circle" aria-label="Favorite" ng-click="main.editDialog($event,main.user)">
+         <img id="image" class="img-circle"  alt="Image" ng-src="{{main.user.image}}" />
+       </md-button>
     </md-toolbar>
     <tri-menu  flex></tri-menu>
   </md-sidenav>
