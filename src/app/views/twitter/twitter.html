@@ -26,29 +26,27 @@
 </form>
 
 	<md-button ng-click="twitter.getPhoto(4)">
-getPhoto
-
-	</md-button>
-
-	<md-button ng-click="twitter.init()">
 Rafraichir
 
 	</md-button>
 
-	<img ng-src="{{twitter.photoTest}}">
 
 <div ng-repeat="tweet in twitter.list">
 		<md-input-container class="md-block">
 		<div layout="row" layout-wrap>
 			<div flex="33">
-					<img ng-src="{{twitter.getPhoto(message.creatorId)}}">
+				<img class="img-circle" ng-src="{{twitter.getPhoto(tweet.creatorId)}}" />
 			</div>
 			<div flex="66">
+				Par {{twitter.getUserName(tweet.creatorId)}} le 01/05/2015
+			</div>
+		</div>
+		<div layout="row" layout-wrap>
+			<div flex="100">
 				{{tweet.message}}
 			</div>
-		
-		</div>
-	</md-input-container>
+		</div>	
+</md-input-container>
 
 
 </div>	

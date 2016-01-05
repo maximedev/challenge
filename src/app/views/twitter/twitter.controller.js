@@ -28,23 +28,41 @@ TweetService.createTweet(tweet).then(
 
  vm.init = function (){
   $log.debug("init");
-  $log.debug(TweetService);
+  $log.debug(user);
+  
+  vm.listeTweet = [];
+
   var promise = TweetService.resource().refreshAll(); 
-  return promise.then(function(data){
+  promise.then(function(data){
     $log.debug(data);
      vm.list = data ;
+  });
+
+  promise = user.refreshAll();
+
+  promise.then(function(data){
+    $log.debug(data);
+    vm.listuser = data ;
   })
+
 };
 
 vm.getPhoto = function(id){
-
-  /*var promise = user.resource().get(id);
-  return promise.then(function(data){
-    $log.debug(data);
-     vm.listUser = data ;
-  })*/
-
+  for( var i in vm.listuser){
+    if(vm.listuser[i].id === id){
+      return vm.listuser[i].image ;
+    }
+  }
 };
+
+vm.getUserName = function(id){
+  for( var i in vm.listuser){
+    if(vm.listuser[i].id === id){
+      return vm.listuser[i].username ;
+    }
+  }
+};
+
 
 //on initialise la page
 vm.init();

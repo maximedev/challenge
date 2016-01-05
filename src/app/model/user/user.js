@@ -7,9 +7,7 @@
 
   /** @ngInject */
   function UserService(DS, $http, $auth, $state, config) {
-    var User = [];
-     User.resource = function() {
-     return DS.defineResource('user', {
+    var User = DS.defineResource('user', {
       name: 'User',
       idAttribute: 'id',
       relations:{
@@ -20,8 +18,7 @@
           }
         }
       }
-    })
-    };
+    });
 
     User.getMe = function(){
       return $http.get(config.api.basePath+'/auth/me')
