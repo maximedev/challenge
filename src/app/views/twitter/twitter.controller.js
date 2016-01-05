@@ -7,23 +7,47 @@
 
 
       /** @ngInject */
- function TwitterController(Todo,user,$log) {
+ function TwitterController(Message,user,$log) {
 	var vm = this;
 
 	vm.submitForm = function (todo){
-		$log.debug(todo);
-		todo.createdAt = new Date().getTime();
+		$log.debug("Envoi d'un message");
+
 		var promise;
 	if(todo.id){
-		promise= Todo.update(todo.id,todo);
+		promise= Message.update(todo.id,todo);
 	}else{
 		todo.creatorId = user.me.id;
-		promise = Todo.create(todo);
-      }
-      return promise.then(function(data){
-      $log.debug(data);
+    $log.debug("Creation");
+		promise = Message.create(todo);
+  }
+      return promise.then(function(){
+        vm.init();
       })
     }
 
-  }
+
+vm.init = function (){
+  $log.debug(Message);
+  var promise = Message.refreshAll(); 
+
+   return promise.then(function(data){
+     vm.list = data ;
+  })
+}
+
+vm.getPhoto = function(id){
+    $log.debug(id);
+   /* var promise = user.find(id); 
+    return promise.then(function(data){
+      $log.debug(data);
+     vm.photoTest = data.image ;
+  })*/
+}
+
+//on initialise la page
+vm.init();
+
+}
+
 })();

@@ -24,3 +24,28 @@
 		</div>
 	</md-input-container>
 </form>
+
+	<md-button ng-click="twitter.getPhoto(4)">
+Rafraichir
+
+	</md-button>
+
+	<img ng-src="{{twitter.photoTest}}">
+
+<div ng-repeat="message in twitter.list">
+		<md-input-container class="md-block">
+		<div layout="row" layout-wrap>
+			<div flex="33">
+					<img ng-src="{{twitter.getPhoto(message.creatorId)}}">
+			</div>
+			<div flex="66">
+				{{message.message}}
+			</div>
+		
+		</div>
+	</md-input-container>
+
+
+</div>	
+
+

@@ -58,7 +58,7 @@
       });
 
 
-    $urlRouterProvider.otherwise('/todo');
+    $urlRouterProvider.otherwise('/twitter');
   }
 
   function skipIfLoggedIn($q, $auth) {
