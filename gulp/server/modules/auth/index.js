@@ -6,6 +6,7 @@ var config = require('./lib/utils').config;
 var ensureAuthenticated = require('./lib/utils').EnsureAuthenticated;
 
 var mockPath = './gulp/server/mockData/user.json';
+var mockTweet = './gulp/server/mockData/tweet.json';
 
 
 
@@ -57,4 +58,24 @@ module.exports = function(server){
   server.get('/auth/me',ensureAuthenticated, function(req, res){
     res.json(req.user);
   });
+  
+  
+  server.post('/add/tweet', function(req, res){
+    fs.readJson(mockTweet)
+      .then(function(data){
+        req.body.id = data.length;
+        data.push(req.body);
+        return fs.outputJson(mockTweet,data)
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+  });
+
+  server.get('/tweet/getAll', function(req, res){
+    return fs.readJson(mockTweet).then(function(data){
+      return data ;
+      })
+  });
+  
 }
