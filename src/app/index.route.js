@@ -46,18 +46,8 @@
         url: '/twitter',
         parent: 'main',
         templateUrl: 'app/views/twitter/twitter.html',
-        controller: 'TweetController',
-        controllerAs: 'tweet',
-        resolve: {
-          list: /** @ngInject */function(Tweet){
-            return Tweet.findAll({
-              _sort:'createdAt',
-              _order:'DESC',
-              _start:0,
-              _limit:2
-            })
-          }
-        }
+        controller: 'TwitterController',
+        controllerAs: 'twitter'
       })
       .state('chart', {
         url: '/chart',

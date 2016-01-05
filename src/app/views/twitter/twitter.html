@@ -1,37 +1,3 @@
-<form novalidate name="twitter.formTweet" ng-submit="twitter.submitForm('test')">
-	<md-input-container class="md-block">
-		<div layout="row" layout-wrap>
-			<div flex="66">
-				<label >Message</label>
-				<input type="texte" md-maxlength="140" required name="message" ng-model="twitter.tweet.message">
-				<div ng-messages="twitter.tweet.message.$error">
-					<div ng-message="required">Le messagee est obligatoire</div>
-				</div>
-			</div>
-			<div flex="33">
-				<img src="/assets/images/default128.png">
-			</div>
-		</div>
-    <div layout="row" layout-wrap>
-      <div flex="100">
-        <!--<md-button >
-                <md-icon md-font-icon="ion-android-add"></md-icon>
-                </md-button>-->
-        <md-button type="submit" >
-          <md-icon md-font-icon="ion-android-send"></md-icon>
-        </md-button>
-      </div>
-    </div>
-  </md-input-container>
-</form>
-<<<<<<< HEAD
-
-	<md-button ng-click="twitter.getPhoto(4)">
-Rafraichir
-
-	</md-button>
-
-
 <div ng-repeat="tweet in twitter.list">
 		<md-input-container class="md-block">
 		<div layout="row" layout-wrap>
@@ -42,25 +8,13 @@ Rafraichir
 				Par {{twitter.getUserName(tweet.creatorId)}} le 01/05/2015
 			</div>
 		</div>
+
 		<div layout="row" layout-wrap>
-			<div flex="100">
+			<div flex="66">
 				{{tweet.message}}
 			</div>
 		</div>	
 </md-input-container>
-=======
-<md-data-table-container>
-  <table md-data-table>
-    <tbody>
-    <tr md-auto-select ng-repeat="item in tweet.list">
-      <td>{{item.message}}</td>
-      <td>{{item.createdAt | date:'dd/MM/yyyy HH:mm'}}</td>
-    </tr>
-    </tbody>
-  </table>
-</md-data-table-container>
->>>>>>> 445a6b230594bc35ed9a3fbff93baa162525cbb0
-
-
+</div>	
 
 

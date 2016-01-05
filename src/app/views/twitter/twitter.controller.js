@@ -8,8 +8,8 @@
 
       /** @ngInject */
  function TwitterController(TweetService,user,$log) {
-	var vm = this;
-
+	
+  var vm = this;
 
 	vm.submitForm = function (tweet){
 
