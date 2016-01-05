@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "message": "test",
     "creatorId": 1,
     "id": 0
@@ -7,19 +8,28 @@
   {
     "message": "envoi d'un tweet",
     "creatorId": 1,
+=======
+    "message": "Le message du twit numero 1",
+    "image": "",
+    "creatorId": 7,
+    "createdAt": 234123131231324,
+>>>>>>> 445a6b230594bc35ed9a3fbff93baa162525cbb0
     "id": 1
   },
   {
-    "message": "envoi d'un tweet",
-    "creatorId": 1,
+    "message": "Le message du twit numero 2",
+    "image": "",
+    "creatorId": 9,
+    "createdAt": 4564645645645646,
     "id": 2
   },
   {
-    "message": "envoi d'un tweet",
-    "creatorId": 1,
-    "createdAt": 1452019260806,
-    "theme": "Informatique",
+    "message": "Le message du twit numero 3",
+    "image": "",
+    "creatorId": 9,
+    "createdAt": 7895789546352126,
     "id": 3
+<<<<<<< HEAD
   },
   {
     "message": "envoi d'un tweet",
@@ -118,5 +128,7 @@
     "createdAt": 1452024277657,
     "theme": "Informatique",
     "id": 18
+=======
+>>>>>>> 445a6b230594bc35ed9a3fbff93baa162525cbb0
   }
 ]

@@ -3,28 +3,26 @@
 
   angular
     .module('formationAngularLyon')
-    .controller('TwitterController', TwitterController);
+    .controller('TweetController', TweetController);
 
 
       /** @ngInject */
- function TwitterController(TweetService,user,$log) {
+ function TweetController(list,Tweet,user,$log) {
 	var vm = this;
 
+  vm.list= list;
 
-	vm.submitForm = function (tweet){
+        vm.submitForm = function(tweet){
+          $log.debug(tweet);
+          tweet.createdAt = new Date().getTime();
+          var promise;
+            tweet.creatorId = user.me.id;
+            promise = Tweet.create(tweet);
 
-		$log.debug("Envoi d'un message");
-		tweet.creatorId = user.me.id;
-    tweet.createdAt = new Date().getTime();
-    tweet.theme = "Informatique";
-TweetService.createTweet(tweet).then(
-        function(response){
-          $log.debug(response.data);
-          vm.list.psuh(response.data);
+          return promise.then(function(data){
+            return $mdDialog.hide(data);
+          })
         }
-      );
-    }
-
 
  vm.init = function (){
   $log.debug("init");
@@ -64,9 +62,8 @@ vm.getUserName = function(id){
 };
 
 
-//on initialise la page
+
 vm.init();
 
 }
-
 })();

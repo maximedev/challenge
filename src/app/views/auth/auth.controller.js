@@ -8,7 +8,7 @@
   /** @ngInject */
   function AuthController($scope,$auth,$state,$http,$log,$document,toastr,user) {
     var vm = this;
-    vm.selectedTab = 0;
+    vm.selectedTab = 1;
 
     vm.signin = function(){
       if(vm.signinForm.$valid) {
