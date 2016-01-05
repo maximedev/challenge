@@ -1,5 +1,4 @@
 # Challenge ICDC
-correction de l'exercice utilisé lors de la formation
 
 
 ## Installation

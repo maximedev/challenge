@@ -1,0 +1,47 @@
+<md-dialog aria-label="{{ dialog.title }}"  ng-cloak>
+  <form name="dialog.toForm" ng-submit="dialog.submitForm(dialog.todo)" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{ dialog.title }}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div class="md-dialog-content">
+        <div>
+          <md-datepicker required ng-model="dialog.todo.dueTo" name="dueTo" md-placeholder="dead line"></md-datepicker>
+          <div ng-messages="dialog.todoForm.dueTo.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </div>
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input md-maxlength="30" required name="name" ng-model="dialog.todo.name">
+          <div ng-messages="dialog.todoForm.name.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea name="clientName" rows="5" ng-model="dialog.todo.description" required></textarea>
+          <div ng-messages="dialog.todoForm.description.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button type="submit" md-autofocus>
+        {{ dialog.buttonLabel }}
+      </md-button>
+      <span flex></span>
+      <md-button type="button" ng-click="dialog.close()">
+        Cancel
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
