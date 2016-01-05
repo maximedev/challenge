@@ -26,20 +26,25 @@
 </form>
 
 	<md-button ng-click="twitter.getPhoto(4)">
+getPhoto
+
+	</md-button>
+
+	<md-button ng-click="twitter.init()">
 Rafraichir
 
 	</md-button>
 
 	<img ng-src="{{twitter.photoTest}}">
 
-<div ng-repeat="message in twitter.list">
+<div ng-repeat="tweet in twitter.list">
 		<md-input-container class="md-block">
 		<div layout="row" layout-wrap>
 			<div flex="33">
 					<img ng-src="{{twitter.getPhoto(message.creatorId)}}">
 			</div>
 			<div flex="66">
-				{{message.message}}
+				{{tweet.message}}
 			</div>
 		
 		</div>

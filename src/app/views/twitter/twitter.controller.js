@@ -7,43 +7,44 @@
 
 
       /** @ngInject */
- function TwitterController(Message,user,$log) {
+ function TwitterController(TweetService,user,$log) {
 	var vm = this;
 
-	vm.submitForm = function (todo){
-		$log.debug("Envoi d'un message");
 
-		var promise;
-	if(todo.id){
-		promise= Message.update(todo.id,todo);
-	}else{
-		todo.creatorId = user.me.id;
-    $log.debug("Creation");
-		promise = Message.create(todo);
-  }
-      return promise.then(function(){
-        vm.init();
-      })
+	vm.submitForm = function (tweet){
+
+		$log.debug("Envoi d'un message");
+		tweet.creatorId = user.me.id;
+    tweet.createdAt = new Date().getTime();
+    tweet.theme = "Informatique";
+TweetService.createTweet(tweet).then(
+        function(response){
+          $log.debug(response.data);
+          vm.list.psuh(response.data);
+        }
+      );
     }
 
 
-vm.init = function (){
-  $log.debug(Message);
-  var promise = Message.refreshAll(); 
-
-   return promise.then(function(data){
+ vm.init = function (){
+  $log.debug("init");
+  $log.debug(TweetService);
+  var promise = TweetService.resource().refreshAll(); 
+  return promise.then(function(data){
+    $log.debug(data);
      vm.list = data ;
   })
-}
+};
 
 vm.getPhoto = function(id){
-    $log.debug(id);
-   /* var promise = user.find(id); 
-    return promise.then(function(data){
-      $log.debug(data);
-     vm.photoTest = data.image ;
+
+  /*var promise = user.resource().get(id);
+  return promise.then(function(data){
+    $log.debug(data);
+     vm.listUser = data ;
   })*/
-}
+
+};
 
 //on initialise la page
 vm.init();
