@@ -1,6 +1,5 @@
 [
   {
-<<<<<<< HEAD
     "message": "test",
     "creatorId": 1,
     "id": 0
@@ -8,12 +7,10 @@
   {
     "message": "envoi d'un tweet",
     "creatorId": 1,
-=======
     "message": "Le message du twit numero 1",
     "image": "",
     "creatorId": 7,
     "createdAt": 234123131231324,
->>>>>>> 445a6b230594bc35ed9a3fbff93baa162525cbb0
     "id": 1
   },
   {
@@ -29,7 +26,6 @@
     "creatorId": 9,
     "createdAt": 7895789546352126,
     "id": 3
-<<<<<<< HEAD
   },
   {
     "message": "envoi d'un tweet",
