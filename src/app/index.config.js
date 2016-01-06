@@ -43,18 +43,28 @@
       icon: 'ion-pie-graph',
       type: 'dropdown',
       children:[{
-        name: 'Thème 1',
+        name: 'Vie de l\'entreprise',
         type: 'link',
-        state: 'twitter'
+        state: 'twitterVieEntreprise'
       },{
-        name: 'Thème 2',
+        name: 'Ressources Humaines',
         type: 'link',
-        state: 'twitter'
+        state: 'twitterRH'
       },
       {
-        name: 'Thème 3',
+        name: 'Challenge ICDC',
         type: 'link',
-        state: 'twitter'
+        state: 'twitterChallengeICDC'
+      },
+      {
+        name: 'Développement',
+        type: 'link',
+        state: 'twitterDeveloppement'
+      },
+      {
+        name: 'Projets',
+        type: 'link',
+        state: 'twitterProjets'
       }
       ]
     });

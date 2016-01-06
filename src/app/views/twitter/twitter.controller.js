@@ -7,8 +7,9 @@
 
 
       /** @ngInject */
- function TweetController(Tweet, user, $mdDialog, toastr, $log) {
+ function TweetController(themeSelected, Tweet, user, $mdDialog, toastr, $log) {
 	var vm = this;
+  vm.selectedTheme = themeSelected.value;
 
 	/*vm.submitForm = function (tweet){
 		$log.debug("Envoi d'un message");
@@ -58,7 +59,7 @@
     var promise = Tweet.resource().refreshAll();
     promise.then(function(data){
       $log.debug(data);
-      vm.list = data ;
+      vm.list = data;
     });
 
     promise = user.refreshAll();

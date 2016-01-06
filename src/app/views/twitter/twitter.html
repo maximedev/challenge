@@ -7,7 +7,7 @@
 </md-data-table-toolbar>
 <md-content>
     <md-list>
-      <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | orderBy:'-createdAt'">
+      <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | filter:{theme:tweet.selectedTheme}| orderBy:'-createdAt'">
         <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
         <div class="md-list-item-text" layout="column">
           <h3> De {{tweet.getUserName(tw.creatorId)}} le {{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</h3>

@@ -47,8 +47,72 @@
         parent: 'main',
         templateUrl: 'app/views/twitter/twitter.html',
         controller: 'TweetController',
-        controllerAs: 'tweet'
-
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected:  function(){
+            return {value: ''};
+          }
+        }
+      })
+      .state('twitterVieEntreprise', {
+        url: '/twitter/VieEntreprise',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected:  function(){
+            return {value: 'Vie de l\'entreprise'};
+          }
+        }
+      })
+      .state('twitterRH', {
+        url: '/twitter/RessourcesHumaines',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected:  function(){
+            return {value: 'Ressources Humaines'};
+          }
+        }
+      })
+      .state('twitterChallengeICDC', {
+        url: '/twitter/ChallengeICDC',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected:  function(){
+            return {value: 'Challenge ICDC'};
+          }
+        }
+      })
+      .state('twitterDeveloppement', {
+        url: '/twitter/Developpement',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected:  function(){
+            return {value: 'Développement'};
+          }
+        }
+      })
+      .state('twitterProjets', {
+        url: '/twitter/Projets',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected:  function(){
+            return {value: 'Projets'};
+          }
+        }
       })
       .state('chart', {
         url: '/chart',
