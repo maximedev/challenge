@@ -7,7 +7,7 @@
 
 
       /** @ngInject */
- function TweetController(list,Tweet,user,$log) {
+ function TweetController(list, Tweet, user, $mdDialog, toastr, $log) {
 	var vm = this;
 
   vm.list= list;
@@ -35,6 +35,25 @@
     });
   }*/
 
+  function creationDialogTweet(event){
+    $log.debug("Appel dialog tweet");
+     return $mdDialog.show({
+         templateUrl: 'app/views/twitter/dialog/twitter.dialog.html',
+         controller: 'TwitterDialogController',
+         controllerAs: 'dialog',
+         targetEvent: event,
+         locals: {
+           options:{
+             title: 'Ajouter un nouveau Tweet',
+             buttonLabel: 'Publier'
+           }
+         }
+       })
+       .then(function(createdDTweet){
+         vm.list.push(createdDTweet);
+         toastr.info('created !!!!')
+       })
+   }
 
 
 	/*function createTwit (todo){

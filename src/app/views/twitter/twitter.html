@@ -1,11 +1,18 @@
-<form novalidate name="twitter.formTweet" ng-submit="twitter.submitForm('test')">
+<md-data-table-toolbar layout="row">
+  <h2 class="md-title">Fil actualité</h2>
+  <span flex></span>
+  <md-button class="md-icon-button">
+    <md-icon md-font-icon="ion-plus-round" ng-click="::tweet.creationDialogTweet($event)"></md-icon>
+  </md-button>
+</md-data-table-toolbar>
+<!--<form novalidate name="twitter.formTweet" ng-submit="twitter.submitForm(tweet)">
 	<md-input-container class="md-block">
 		<div layout="row" layout-wrap>
 			<div flex="66">
 				<label >Message</label>
 				<input type="texte" md-maxlength="140" required name="message" ng-model="twitter.tweet.message">
 				<div ng-messages="twitter.tweet.message.$error">
-					<div ng-message="required">Le messagee est obligatoire</div>
+					<div ng-message="required">Le message est obligatoire</div>
 				</div>
 			</div>
 			<div flex="33">
@@ -14,16 +21,16 @@
 		</div>
     <div layout="row" layout-wrap>
       <div flex="100">
-        <!--<md-button >
-                <md-icon md-font-icon="ion-android-add"></md-icon>
-                </md-button>-->
+        <md-button class="md-icon-button">
+                <md-icon md-font-icon="ion-android-add" ng-click="::twitter.creationDialogTweet($event)"></md-icon>
+        </md-button>
         <md-button type="submit" >
           <md-icon md-font-icon="ion-android-send"></md-icon>
         </md-button>
       </div>
     </div>
   </md-input-container>
-</form>
+</form>-->
 <md-data-table-container>
   <table md-data-table>
     <tbody>

@@ -1,0 +1,51 @@
+<md-dialog aria-label="{{ dialog.title }}"  ng-cloak>
+  <!--<form name="dialog.toForm" ng-submit="dialog.submitForm(dialog.tweet)" novalidate>-->
+  <form name="dialog.tweetForm" ng-submit="dialog.submitForm(dialog.tweet)" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{ dialog.title }}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Fermer la fenêtre"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div class="md-dialog-content">
+        <md-input-container>
+          <label>Theme</label>
+          <md-select ng-model="tweet.themeSelect">
+            <md-option ng-repeat="t in tweet.themes" value="{{t.label}}">
+              {{t.label}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Theme</label>
+          <input md-maxlength="30" required name="theme" ng-model="dialog.tweet.theme">
+          <div ng-messages="dialog.tweetForm.theme.$error">
+            <div ng-message="required">Le theme est obligatoire.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Message</label>
+          <input md-maxlength="140" required name="message" ng-model="dialog.tweet.message">
+          <div ng-messages="dialog.tweetForm.message.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-maxlength">The name has to be less than 140 characters long.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button type="submit" md-autofocus>
+        {{ dialog.buttonLabel }}
+      </md-button>
+      <span flex></span>
+      <md-button type="button" ng-click="dialog.close()">
+        Cancel
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
