@@ -1,29 +1,22 @@
 <md-data-table-toolbar layout="row">
   <h2 class="md-title">Fil actualité</h2>
   <span flex></span>
-  <md-button class="md-icon-button">
-    <md-icon md-font-icon="ion-plus-round" ng-click="::tweet.creationDialogTweet($event)"></md-icon>
+  <md-button class="md-icon-button" ng-click="tweet.creationDialogTweet($event)">
+      <md-icon md-font-icon="ion-plus-round" ></md-icon>
   </md-button>
 </md-data-table-toolbar>
-
-<div ng-repeat="tweet in twitter.list">
-  <md-input-container class="md-block">
-    <div layout="row" layout-wrap>
-      <div flex="33">
-        <img class="img-circle" ng-src="{{twitter.getPhoto(tweet.creatorId)}}" />
-      </div>
-      <div flex="66">
-        Par {{twitter.getUserName(tweet.creatorId)}} le 01/05/2015
-      </div>
-    </div>
-
-    <div layout="row" layout-wrap>
-      <div flex="66">
-        {{tweet.message}}
-      </div>
-    </div>
-  </md-input-container>
-</div>
+<md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | orderBy:'-createdAt'">
+        <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
+        <div class="md-list-item-text" layout="column">
+          <h3> De {{tweet.getUserName(tw.creatorId)}} le {{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</h3>
+          <h4>{{tw.theme}}</h4>
+          <p>{{tw.message}}</p>
+        </div>
+      </md-list-item>
+    </md-list>
+</md-content>
 
 <!-- <md-data-table-container>
   <table md-data-table>
