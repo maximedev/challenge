@@ -47,7 +47,7 @@
         parent: 'main',
         templateUrl: 'app/views/twitter/twitter.html',
         controller: 'TweetController',
-        controllerAs: 'tweet',
+        controllerAs: 'tweet'
 
       })
       .state('chart', {
