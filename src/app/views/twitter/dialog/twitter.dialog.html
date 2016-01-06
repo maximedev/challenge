@@ -14,26 +14,26 @@
       <div class="md-dialog-content">
         <md-input-container>
           <label>Theme</label>
-          <md-select ng-model="tweet.themeSelect">
-            <md-option ng-repeat="t in tweet.themes" value="{{t.label}}">
+          <md-select ng-model="dialog.tweet.theme">
+            <md-option ng-repeat="t in dialog.themes" value="{{t.label}}">
               {{t.label}}
             </md-option>
           </md-select>
         </md-input-container>
 
-        <md-input-container class="md-block">
+<!--        <md-input-container class="md-block">
           <label>Theme</label>
           <input md-maxlength="30" required name="theme" ng-model="dialog.tweet.theme">
           <div ng-messages="dialog.tweetForm.theme.$error">
             <div ng-message="required">Le theme est obligatoire.</div>
           </div>
-        </md-input-container>
+        </md-input-container> -->
         <md-input-container class="md-block">
           <label>Message</label>
           <input md-maxlength="140" required name="message" ng-model="dialog.tweet.message">
           <div ng-messages="dialog.tweetForm.message.$error">
-            <div ng-message="required">This is required.</div>
-            <div ng-message="md-maxlength">The name has to be less than 140 characters long.</div>
+            <div ng-message="required">Un message est obligatoire.</div>
+            <div ng-message="md-maxlength">le tweet ne doit pas dépasser les 140 caractères.</div>
           </div>
         </md-input-container>
       </div>

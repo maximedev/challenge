@@ -25,7 +25,7 @@
 
 
     triMenuProvider.addMenu({
-      name: 'Twitter',
+      name: 'Fil d\'actualité',
       icon: 'ion-home',
       type: 'link',
       state: 'twitter'
@@ -39,14 +39,24 @@
     });
 
     triMenuProvider.addMenu({
-      name: 'Chart',
+      name: 'Par thèmes :',
       icon: 'ion-pie-graph',
       type: 'dropdown',
       children:[{
-        name: 'click me !!',
+        name: 'Thème 1',
         type: 'link',
-        state: 'chart'
-      }]
+        state: 'twitter'
+      },{
+        name: 'Thème 2',
+        type: 'link',
+        state: 'twitter'
+      },
+      {
+        name: 'Thème 3',
+        type: 'link',
+        state: 'twitter'
+      }
+      ]
     });
   }
 

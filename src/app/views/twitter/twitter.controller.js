@@ -7,11 +7,10 @@
 
 
       /** @ngInject */
- function TweetController(list, Tweet, user, $mdDialog, toastr, $log) {
+ function TweetController(Tweet, user, $mdDialog, toastr, $log) {
 	var vm = this;
-  vm.creationDialogTweet = creationDialogTweet;
 
-	vm.submitForm = function (tweet){
+	/*vm.submitForm = function (tweet){
 		$log.debug("Envoi d'un message");
 		tweet.creatorId = user.me.id;
     tweet.createdAt = new Date().getTime();
@@ -22,9 +21,9 @@
           vm.list.push(response.data);
         }
       );
-    }
+    }*/
 
-  function creationDialogTweet(event){
+  vm.creationDialogTweet = function(event){
     $log.debug("Appel dialog tweet");
      return $mdDialog.show({
          templateUrl: 'app/views/twitter/dialog/twitter.dialog.html',
@@ -40,14 +39,15 @@
        })
        .then(function(createdDTweet){
          vm.list.push(createdDTweet);
-         toastr.info('created !!!!')
+         toastr.info('Tweet envoyé !');
+         Tweet.createTweet(createdDTweet).then(
+            function(response){
+              $log.debug(response.data);
+          }
+      );
+
        })
    }
-
-  /*function createTweet (tweet){
-    $log.debug(tweet);
-    toastr.info('created !!!!');
-    }*/
 
   vm.init = function (){
     $log.debug("init");
