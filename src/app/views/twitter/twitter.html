@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <md-data-table-toolbar layout="row">
   <h2 class="md-title">Fil actualité</h2>
   <span flex></span>
@@ -5,33 +6,27 @@
     <md-icon md-font-icon="ion-plus-round" ng-click="::tweet.creationDialogTweet($event)"></md-icon>
   </md-button>
 </md-data-table-toolbar>
-<!--<form novalidate name="twitter.formTweet" ng-submit="twitter.submitForm(tweet)">
-	<md-input-container class="md-block">
-		<div layout="row" layout-wrap>
-			<div flex="66">
-				<label >Message</label>
-				<input type="texte" md-maxlength="140" required name="message" ng-model="twitter.tweet.message">
-				<div ng-messages="twitter.tweet.message.$error">
-					<div ng-message="required">Le message est obligatoire</div>
-				</div>
-			</div>
-			<div flex="33">
-				<img src="/assets/images/default128.png">
-			</div>
-		</div>
+
+<div ng-repeat="tweet in twitter.list">
+  <md-input-container class="md-block">
     <div layout="row" layout-wrap>
-      <div flex="100">
-        <md-button class="md-icon-button">
-                <md-icon md-font-icon="ion-android-add" ng-click="::twitter.creationDialogTweet($event)"></md-icon>
-        </md-button>
-        <md-button type="submit" >
-          <md-icon md-font-icon="ion-android-send"></md-icon>
-        </md-button>
+      <div flex="33">
+        <img class="img-circle" ng-src="{{twitter.getPhoto(tweet.creatorId)}}" />
+      </div>
+      <div flex="66">
+        Par {{twitter.getUserName(tweet.creatorId)}} le 01/05/2015
+      </div>
+    </div>
+
+    <div layout="row" layout-wrap>
+      <div flex="66">
+        {{tweet.message}}
       </div>
     </div>
   </md-input-container>
-</form>-->
-<md-data-table-container>
+</div>
+
+<!-- <md-data-table-container>
   <table md-data-table>
     <tbody>
     <tr md-auto-select ng-repeat="item in tweet.list">
@@ -40,8 +35,7 @@
     </tr>
     </tbody>
   </table>
-</md-data-table-container>
-
+</md-data-table-container> -->
 
 
 

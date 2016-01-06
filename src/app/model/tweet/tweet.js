@@ -3,11 +3,14 @@
 
   angular
     .module('formationAngularLyon')
-    .service('Tweet', TweetService);
+    .service('TweetService',TweetService);
 
   /** @ngInject */
-  function TweetService(DS) {
-    return DS.defineResource('tweet', {
+  function TweetService(DS,config,$http) {
+     var tweet = [] ;
+     
+     tweet.resource =function(){ 
+      return DS.defineResource('tweet', {
       name: 'Tweet',
       idAttribute: 'id',
       relations: {
@@ -19,6 +22,18 @@
         }
       }
     })
+
+    } 
+
+   tweet.createTweet =  function(tweet){
+        return $http({
+          method: 'POST',
+          url: config.api.basePath + "/add/tweet",
+          data: tweet
+        });
+      }
+
+     return tweet ;
 
   }
 })();
