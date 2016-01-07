@@ -12,14 +12,17 @@
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | filter:{theme:tweet.selectedTheme}| orderBy:'-createdAt'">
         <div>
+          <div>
           <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
-          <p class="md-subhead">{{tweet.getUserName(tw.creatorId)}}</p>
-          <p class="">{{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</p>
+          </div>
+          <div class="username-tweet">{{tweet.getUserName(tw.creatorId)}}</div>
+          <div class="date-tweet">{{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</div>
+
         </div>
         <div class="md-list-item-text" layout="column" >
           <h>{{tw.theme}}</h>
           <p>{{tw.message}}</p>
-          <img ng-src="{{tw.image}}" class="img-tweet" />
+          <img ng-src="{{tw.image}}" ng-show="tweet.imagePresente()" class="img-tweet" />
           <br/>
         </div>
       </md-list-item>
