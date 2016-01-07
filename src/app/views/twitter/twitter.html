@@ -11,27 +11,20 @@
 <md-content>
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | filter:{theme:tweet.selectedTheme}| orderBy:'-createdAt'">
-        <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
-        <div class="md-list-item-text" layout="column">
-          <h3> De {{tweet.getUserName(tw.creatorId)}} le {{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</h3>
-          <h4>{{tw.theme}}</h4>
+        <div>
+          <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
+          <p class="md-subhead">{{tweet.getUserName(tw.creatorId)}}</p>
+          <p class="">{{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</p>
+        </div>
+        <div class="md-list-item-text" layout="column" >
+          <h>{{tw.theme}}</h>
           <p>{{tw.message}}</p>
-          <img ng-src="{{tw.image}}" class="md-avatar" />
+          <img ng-src="{{tw.image}}" class="img-tweet" />
+          <br/>
         </div>
       </md-list-item>
     </md-list>
 </md-content>
-
-<!-- <md-data-table-container>
-  <table md-data-table>
-    <tbody>
-    <tr md-auto-select ng-repeat="item in tweet.list">
-      <td>{{item.message}}</td>
-      <td>{{item.createdAt | date:'dd/MM/yyyy HH:mm'}}</td>
-    </tr>
-    </tbody>
-  </table>
-</md-data-table-container> -->
 
 
 

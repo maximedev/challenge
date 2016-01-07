@@ -92,7 +92,7 @@ section.jumbotron {
 
 #triggerInput {
  opacity:0;
- max-width:0px; 
+ max-width:0px;
 }
 
 .img-circle{
@@ -100,6 +100,12 @@ section.jumbotron {
     width: 100px;
     height: 100px;
 }
+
+.img-tweet{
+  width: 45%;
+  height: 45%;
+}
+
 
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject

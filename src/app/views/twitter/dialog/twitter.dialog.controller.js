@@ -12,7 +12,8 @@
     var vm = this;
     $log.debug(options);
     vm.title = options.title;
-    vm.buttonLabel = options.buttonLabel;
+    vm.buttonValiderLabel = options.buttonValiderLabel;
+    vm.buttonQuitterLabel = options.buttonQuitterLabel;
 
     vm.themeSelect = '';
     vm.themes = ('Vie de l\'entreprise;Ressources Humaines;Challenge ICDC;Développement;Projets')
@@ -24,11 +25,13 @@
 
     function submitForm(tweetToPost){
       $log.debug(tweetToPost);
-      tweetToPost.createdAt = new Date().getTime();
-      tweetToPost.creatorId = user.me.id;
-      var canvas = $document[0].getElementById('canvasPhotoTweet');
-      tweetToPost.image = canvas.toDataURL();
-      return $mdDialog.hide(tweetToPost);
+      if(vm.tweetForm.$valid) {
+        tweetToPost.createdAt = new Date().getTime();
+        tweetToPost.creatorId = user.me.id;
+        var canvas = $document[0].getElementById('canvasPhotoTweet');
+        tweetToPost.image = canvas.toDataURL();
+        return $mdDialog.hide(tweetToPost);
+      }
     }
 
     function close(){

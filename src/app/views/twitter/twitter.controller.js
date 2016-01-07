@@ -33,8 +33,9 @@
          targetEvent: event,
          locals: {
            options:{
-             title: 'Ajouter un nouveau Tweet',
-             buttonLabel: 'Publier'
+             title: 'Publier un nouveau message',
+             buttonValiderLabel: 'Publier',
+             buttonQuitterLabel: 'Annuler'
            }
          }
        })

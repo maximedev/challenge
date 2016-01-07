@@ -1,5 +1,4 @@
 <md-dialog aria-label="{{ dialog.title }}"  ng-cloak>
-  <!--<form name="dialog.toForm" ng-submit="dialog.submitForm(dialog.tweet)" novalidate>-->
   <form name="dialog.tweetForm" ng-submit="dialog.submitForm(dialog.tweet)" novalidate>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -14,11 +13,14 @@
       <div class="md-dialog-content">
         <md-input-container>
           <label>Theme</label>
-          <md-select ng-model="dialog.tweet.theme">
+          <md-select name="themeSelection" ng-model="dialog.tweet.theme" required>
             <md-option ng-repeat="t in dialog.themes" value="{{t.label}}">
               {{t.label}}
             </md-option>
           </md-select>
+          <div ng-messages="dialog.tweetForm.themeSelection.$error">
+            <div ng-message="required">Le choix d'un thème est obligatoire</div>
+          </div>
         </md-input-container>
         <div class="md-actions" layout="row">
           <md-input-container class="md-block">
@@ -41,11 +43,11 @@
     </md-dialog-content>
     <div class="md-actions" layout="row">
       <md-button type="submit" md-autofocus>
-        {{ dialog.buttonLabel }}
+        {{ dialog.buttonValiderLabel }}
       </md-button>
       <span flex></span>
       <md-button type="button" ng-click="dialog.close()">
-        Cancel
+        {{ dialog.buttonQuitterLabel }}
       </md-button>
     </div>
   </form>
