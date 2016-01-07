@@ -29,11 +29,14 @@
               <div ng-message="md-maxlength">le tweet ne doit pas dépasser les 140 caractères.</div>
             </div>
           </md-input-container>
-          <md-button type="button" ng-click="dialog.close()">
+          <md-button type="button" ng-click="dialog.choisirPhotoTweet()">
             <md-icon md-font-icon="ion-plus-round" ></md-icon>
           </md-button>
         </div>
-
+        <md-input-container class="md-block">
+          <canvas id="canvasPhotoTweet"></canvas>
+          <input required aria-label="trigger"  name="triggerInput" type="file" id="triggerInput" onchange="angular.element(this).scope().dialog.setFileTweet(this)" accept="image/*" capture >
+        </md-input-container>
       </div>
     </md-dialog-content>
     <div class="md-actions" layout="row">

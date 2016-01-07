@@ -16,6 +16,7 @@
           <h3> De {{tweet.getUserName(tw.creatorId)}} le {{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</h3>
           <h4>{{tw.theme}}</h4>
           <p>{{tw.message}}</p>
+          <img ng-src="{{tw.image}}" class="md-avatar" />
         </div>
       </md-list-item>
     </md-list>

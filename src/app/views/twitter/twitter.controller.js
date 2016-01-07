@@ -5,7 +5,6 @@
     .module('formationAngularLyon')
     .controller('TweetController', TweetController);
 
-
       /** @ngInject */
  function TweetController(themeSelected, Tweet, user, $mdDialog, toastr, $log) {
 	var vm = this;
@@ -49,7 +48,7 @@
          );
 
        })
-   }
+   };
 
   vm.init = function (){
     $log.debug("init");
