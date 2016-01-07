@@ -66,6 +66,11 @@ module.exports = function(server){
         data.push(req.body);
         return fs.outputJson(mockTweet,data)
       })
+      .then(function(){
+        res.json({
+          token: jwt.encode(req.body,config.TOKEN_SECRET)
+        });
+      })
       .catch(function(err){
         console.log(err);
       });
