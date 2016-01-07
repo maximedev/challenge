@@ -15,7 +15,7 @@
     vm.buttonLabel = options.buttonLabel;
 
     vm.themeSelect = '';
-    vm.themes = ('RH;Challenge ICDC;Technique; Offre Mobilité')
+    vm.themes = ('Vie de l\'entreprise;Ressources Humaines;Challenge ICDC;Développement;Projets')
       .split(';')
       .map(function (theme) { return { label: theme };});
 
