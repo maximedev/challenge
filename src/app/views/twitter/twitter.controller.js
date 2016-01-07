@@ -9,6 +9,7 @@
       /** @ngInject */
  function TweetController(themeSelected, Tweet, user, $mdDialog, toastr, $log) {
 	var vm = this;
+
   vm.selectedTheme = themeSelected.value;
 
 	/*vm.submitForm = function (tweet){
@@ -45,7 +46,7 @@
             function(response){
               $log.debug(response.data);
           }
-      );
+         );
 
        })
    }
@@ -56,12 +57,11 @@
 
     vm.listeTweet = [];
 
-    var promise = Tweet.resource().refreshAll();
+    var promise = Tweet.refreshAll();
     promise.then(function(data){
       $log.debug(data);
       vm.list = data;
     });
-
     promise = user.refreshAll();
 
     promise.then(function(data){
@@ -86,7 +86,6 @@
       }
     }
   };
-
 
 //on initialise la page
   vm.init();

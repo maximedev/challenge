@@ -49,8 +49,8 @@
         controller: 'TweetController',
         controllerAs: 'tweet',
         resolve: {
-          themeSelected:  function(){
-            return {value: ''};
+          themeSelected: function () {
+              return {value: ''};
           }
         }
       })
@@ -61,7 +61,7 @@
         controller: 'TweetController',
         controllerAs: 'tweet',
         resolve: {
-          themeSelected:  function(){
+          themeSelected: function () {
             return {value: 'Vie de l\'entreprise'};
           }
         }
@@ -73,7 +73,7 @@
         controller: 'TweetController',
         controllerAs: 'tweet',
         resolve: {
-          themeSelected:  function(){
+          themeSelected: function () {
             return {value: 'Ressources Humaines'};
           }
         }
@@ -85,7 +85,7 @@
         controller: 'TweetController',
         controllerAs: 'tweet',
         resolve: {
-          themeSelected:  function(){
+          themeSelected: function () {
             return {value: 'Challenge ICDC'};
           }
         }
@@ -97,7 +97,7 @@
         controller: 'TweetController',
         controllerAs: 'tweet',
         resolve: {
-          themeSelected:  function(){
+          themeSelected: function () {
             return {value: 'Développement'};
           }
         }
@@ -109,7 +109,7 @@
         controller: 'TweetController',
         controllerAs: 'tweet',
         resolve: {
-          themeSelected:  function(){
+          themeSelected: function () {
             return {value: 'Projets'};
           }
         }

@@ -7,23 +7,18 @@
 
   /** @ngInject */
   function TweetService(DS,config,$http) {
-     var tweet = [] ;
-
-     tweet.resource =function(){
-      return DS.defineResource('tweet', {
-      name: 'Tweet',
-      idAttribute: 'id',
-      relations: {
-        hasOne: {
-          User: {
-            localField: 'creator',
-            localKey: 'creatorId'
-          }
-        }
-      }
-    })
-
-    }
+     var tweet = DS.defineResource('tweet', {
+         name: 'Tweet',
+         idAttribute: 'id',
+         relations: {
+           hasOne: {
+             User: {
+               localField: 'creator',
+               localKey: 'creatorId'
+             }
+           }
+         }
+       });
 
    tweet.createTweet =  function(tweet){
         return $http({
@@ -33,7 +28,7 @@
         });
       }
 
-     return tweet ;
+    return tweet ;
 
   }
 })();

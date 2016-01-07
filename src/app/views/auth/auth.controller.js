@@ -17,7 +17,7 @@
             return user.getMe()
           })
           .then(function(){
-            $state.go('todo');
+            $state.go('twitter');
           })
           .catch(function () {
             toastr.error('bad credentials');
@@ -57,7 +57,7 @@
       reader.onload = function(event) {
         vm.render(event.target.result);
       };
-    
+
     // when the file is read it triggers the onload event above.
     reader.readAsDataURL(element.files[0]);
   };
@@ -72,7 +72,7 @@ vm.render = function(src){
 
     $log.debug($document);
     var canvas = $document[0].getElementById('canvasPhoto');
-  
+
     if(image.height > MAX_HEIGHT) {
       image.width *= MAX_HEIGHT / image.height;
       image.height = MAX_HEIGHT;
