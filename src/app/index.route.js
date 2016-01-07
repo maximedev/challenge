@@ -27,21 +27,21 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('todo', {
+     /* .state('todo', {
         url: '/todo',
         parent: 'main',
         templateUrl: 'app/views/todo/todo.html',
         controller: 'TodoController',
         controllerAs: 'todo',
-        resolve: {
-          list: /** @ngInject */function(Todo){
-            return Todo.findAll({
+        resolve: {*/
+         // list: /** @ngInject */function(Todo){
+           /* return Todo.findAll({
               _start:0,
               _limit: 5
             })
           }
         }
-      })
+      })*/
       .state('twitter', {
         url: '/twitter',
         parent: 'main',

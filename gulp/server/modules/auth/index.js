@@ -86,7 +86,6 @@ module.exports = function(server){
          return data ;
       })        
       .then(function(){
-          console.log(dataToSend);
         res.json({
           token: jwt.encode(dataToSend,config.TOKEN_SECRET),
           tweets:dataToSend

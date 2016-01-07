@@ -32,15 +32,8 @@
     });
 
     triMenuProvider.addMenu({
-      name: 'Todo',
-      icon: 'ion-compose',
-      type: 'link',
-      state: 'todo'
-    });
-
-    triMenuProvider.addMenu({
       name: 'Par thèmes :',
-      icon: 'ion-pie-graph',
+      icon: 'ion-chevron-down',
       type: 'dropdown',
       children:[{
         name: 'Vie de l\'entreprise',
