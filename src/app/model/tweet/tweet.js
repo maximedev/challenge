@@ -28,6 +28,13 @@
         });
       }
 
+    tweet.getAllTweets =  function(){
+        return $http({
+          method: 'GET',
+          url: config.api.basePath + "/get/tweet"
+        });
+      }    
+
     return tweet ;
 
   }

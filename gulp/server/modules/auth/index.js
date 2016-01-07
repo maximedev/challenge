@@ -60,6 +60,7 @@ module.exports = function(server){
   });
   
   server.post('/add/tweet', function(req, res){
+    console.log('Ajout d\'un tweet');
     fs.readJson(mockTweet)
       .then(function(data){
         req.body.id = data.length;
@@ -69,6 +70,26 @@ module.exports = function(server){
       .then(function(){
         res.json({
           token: jwt.encode(req.body,config.TOKEN_SECRET)
+        });
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+  });
+
+  server.get('/get/tweet',ensureAuthenticated, function(req, res){
+     var dataToSend =[];
+      fs.readJson(mockTweet)
+        .then(function(data){
+      
+        dataToSend = data ;
+         return data ;
+      })        
+      .then(function(){
+          console.log(dataToSend);
+        res.json({
+          token: jwt.encode(dataToSend,config.TOKEN_SECRET),
+          tweets:dataToSend
         });
       })
       .catch(function(err){

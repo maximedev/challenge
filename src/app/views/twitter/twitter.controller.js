@@ -40,30 +40,20 @@
          }
        })
        .then(function(createdDTweet){
-         vm.list.push(createdDTweet);
          toastr.info('Tweet envoyé !');
          Tweet.createTweet(createdDTweet).then(
-            function(response){
-              $log.debug(response.data);
-          }
-         );
-
+            function(){
+              vm.getAllTweet();
+          });
        })
    };
 
   vm.init = function (){
     $log.debug("init");
-    $log.debug(user);
 
-    vm.listeTweet = [];
+    vm.getAllTweet();
 
-    var promise = Tweet.refreshAll();
-    promise.then(function(data){
-      $log.debug(data);
-      vm.list = data;
-    });
-    promise = user.refreshAll();
-
+    var promise = user.refreshAll();
     promise.then(function(data){
       $log.debug(data);
       vm.listuser = data ;
@@ -87,6 +77,14 @@
     }
   };
 
+
+  vm.getAllTweet = function(){
+    var promise = Tweet.getAllTweets();
+    promise.then(function(obj){
+      $log.debug(obj.data.tweets);
+      vm.list = obj.data.tweets;
+    });
+  }
 //on initialise la page
   vm.init();
 
