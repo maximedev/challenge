@@ -85,6 +85,10 @@
       vm.list = obj.data.tweets;
     });
   }
+
+  vm.imagePresente = function(tweet){
+    return tweet.image;
+  }
 //on initialise la page
   vm.init();
 
