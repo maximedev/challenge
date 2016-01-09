@@ -25,7 +25,7 @@
 
 
     triMenuProvider.addMenu({
-      name: 'Fil d\'actualité',
+      name: 'Fil d\'actualités',
       icon: 'ion-home',
       type: 'link',
       state: 'twitter'
