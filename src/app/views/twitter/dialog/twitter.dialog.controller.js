@@ -16,20 +16,22 @@
     vm.buttonQuitterLabel = options.buttonQuitterLabel;
 
     vm.themeSelect = '';
-    vm.themes = ('Vie de l\'entreprise;Ressources Humaines;Challenge ICDC;Développement;Projets')
+    vm.themes = ('Vie de l\'entreprise;Développement;Projets;Challenge ICDC;Loisirs')
       .split(';')
       .map(function (theme) { return { label: theme };});
 
     vm.submitForm = submitForm;
     vm.close = close;
-
+    vm.photoPresent = false ;
     function submitForm(tweetToPost){
       $log.debug(tweetToPost);
       if(vm.tweetForm.$valid) {
         tweetToPost.createdAt = new Date().getTime();
         tweetToPost.creatorId = user.me.id;
+        if(vm.photoPresent){
         var canvas = $document[0].getElementById('canvasPhotoTweet');
         tweetToPost.image = canvas.toDataURL();
+		}
         return $mdDialog.hide(tweetToPost);
       }
     }
@@ -54,11 +56,12 @@
         vm.render(event.target.result);
       };
 
+      vm.photoPresent = true ;
       // when the file is read it triggers the onload event above.
       reader.readAsDataURL(element.files[0]);
     };
 
-    var MAX_HEIGHT = 80;
+    var MAX_HEIGHT = 100;
 
     vm.render = function(src){
       var image = new Image();

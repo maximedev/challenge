@@ -66,30 +66,6 @@
           }
         }
       })
-      .state('twitterRH', {
-        url: '/twitter/RessourcesHumaines',
-        parent: 'main',
-        templateUrl: 'app/views/twitter/twitter.html',
-        controller: 'TweetController',
-        controllerAs: 'tweet',
-        resolve: {
-          themeSelected: function () {
-            return {value: 'Ressources Humaines'};
-          }
-        }
-      })
-      .state('twitterChallengeICDC', {
-        url: '/twitter/ChallengeICDC',
-        parent: 'main',
-        templateUrl: 'app/views/twitter/twitter.html',
-        controller: 'TweetController',
-        controllerAs: 'tweet',
-        resolve: {
-          themeSelected: function () {
-            return {value: 'Challenge ICDC'};
-          }
-        }
-      })
       .state('twitterDeveloppement', {
         url: '/twitter/Developpement',
         parent: 'main',
@@ -111,6 +87,30 @@
         resolve: {
           themeSelected: function () {
             return {value: 'Projets'};
+          }
+        }
+      })
+      .state('twitterChallengeICDC', {
+        url: '/twitter/ChallengeICDC',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected: function () {
+            return {value: 'Challenge ICDC'};
+          }
+        }
+      })
+      .state('twitterLoisirs', {
+        url: '/twitter/Loisirs',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected: function () {
+            return {value: 'Loisirs'};
           }
         }
       })

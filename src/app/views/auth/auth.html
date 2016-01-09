@@ -5,18 +5,18 @@
         <h1 class="md-display-2">Connexion</h1>
         <form novalidate name="auth.signinForm" ng-submit="auth.signin()">
           <md-input-container class="md-block">
-            <label>email</label>
-            <input type="email" md-maxlength="30" required name="email" ng-model="auth.signinUser.email">
+            <label>Adresse mail</label>
+            <input type="email" md-maxlength="50" required name="email" ng-model="auth.signinUser.email">
             <div ng-messages="auth.signinForm.email.$error">
-              <div ng-message="required">This is required.</div>
-              <div ng-message="required">Invalid email.</div>
+              <div ng-message="required">L'adresse mail est obligatore.</div>
+              <div ng-message="required">L'adresse mail saisie est invalide.</div>
             </div>
           </md-input-container>
           <md-input-container class="md-block">
-            <label>Password</label>
+            <label>Mot de passe</label>
             <input required name="password" type="password" ng-model="auth.signinUser.password">
             <div ng-messages="auth.signinForm.password.$error">
-              <div ng-message="required">Password is required.</div>
+              <div ng-message="required">Le mot de passe est obligatoire.</div>
             </div>
           </md-input-container>
           <div>
@@ -32,11 +32,11 @@
         <h1 class="md-display-2">Inscription</h1>
         <form novalidate name="auth.signupForm" ng-submit="auth.signup()">
           <md-input-container class="md-block">
-            <label>email</label>
-            <input type="email" md-maxlength="30" required name="email" ng-model="auth.signupUser.email">
+            <label>Adresse mail</label>
+            <input type="email" md-maxlength="50" required name="email" ng-model="auth.signupUser.email">
             <div ng-messages="auth.signupForm.email.$error">
-              <div ng-message="required">L'email est obligatoire</div>
-              <div ng-message="required">L'email est invalide.</div>
+              <div ng-message="required">L'adresse mail est obligatoire</div>
+              <div ng-message="required">L'adresse mail saisie est invalide.</div>
             </div>
           </md-input-container>
           <md-input-container class="md-block">
@@ -58,7 +58,7 @@
             <input required name="password" type="password" ng-model="auth.signupUser.confirmPassword" compare-to="auth.signupUser.password">
             <div ng-messages="auth.signupForm.password.$error">
               <div ng-message="required">La confirmation du mot de passe est obligatoire.</div>
-              <div ng-message="compareTo">Le mot de passe n'est pas identique</div>
+              <div ng-message="compareTo">Le mot de passe saisi n'est pas identique</div>
             </div>
           </md-input-container>
           <md-input-container class="md-block">

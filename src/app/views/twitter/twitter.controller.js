@@ -123,9 +123,9 @@
     });
   }
 
-  vm.imagePresente = function(tweet){
+  /*vm.imagePresente = function(tweet){
     return tweet.image;
-  }
+  }*/
 
   vm.affichage = function (idList){
     $log.debug("affichage");

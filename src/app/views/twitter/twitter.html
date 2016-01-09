@@ -1,5 +1,5 @@
 <md-data-table-toolbar layout="row">
-  <h2 class="md-title">Fil actualité</h2>
+  <h2 class="md-title">Fil d'actualité {{tweet.selectedTheme}} </h2>
   <span flex></span>
   <md-button class="md-icon-button" ng-click="tweet.creationDialogTweet($event)">
       <md-icon md-font-icon="ion-plus-round" ></md-icon>
@@ -23,7 +23,7 @@
         <div class="md-list-item-text">
           <h>{{tw.theme}}</h>
           <p>{{tw.message}}</p>
-          <img ng-src="{{tw.image}}"  class="img-tweet" />
+          <img ng-src="{{tw.image}}" ng-show="tw.image" class="img-tweet" />
           <br/>
 
         <md-button class="md-icon-button" ng-click="tweet.affichage($index)">
@@ -33,14 +33,14 @@
         <md-icon md-font-icon="ion-reply" ></md-icon>
         </md-button>
           <div ng-show="{{tw.afficherComment}}" class="md-list-item-text" layout="column"  ng-repeat="commentaire in tweet.getComments(tw.id)| orderBy:'-createdAt'" >
-          <h>{{tweet.getUserName(commentaire.creatorId)}} le {{commentaire.createdAt | date:'dd/MM/yyyy HH:mm'}}</h>
+          <h4>{{tweet.getUserName(commentaire.creatorId)}} le {{commentaire.createdAt | date:'dd/MM/yyyy HH:mm'}}</h4>
           <p>{{commentaire.message}}</p>
-          </div> 
+          </div>
         </div>
-     
-            
 
-              
+
+
+
 
 
     <md-divider>

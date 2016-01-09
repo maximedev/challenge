@@ -39,15 +39,6 @@
         name: 'Vie de l\'entreprise',
         type: 'link',
         state: 'twitterVieEntreprise'
-      },{
-        name: 'Ressources Humaines',
-        type: 'link',
-        state: 'twitterRH'
-      },
-      {
-        name: 'Challenge ICDC',
-        type: 'link',
-        state: 'twitterChallengeICDC'
       },
       {
         name: 'Développement',
@@ -58,6 +49,16 @@
         name: 'Projets',
         type: 'link',
         state: 'twitterProjets'
+      },
+      {
+        name: 'Challenge ICDC',
+        type: 'link',
+        state: 'twitterChallengeICDC'
+      },
+      {
+        name: 'Loisirs',
+        type: 'link',
+        state: 'twitterLoisirs'
       }
       ]
     });
