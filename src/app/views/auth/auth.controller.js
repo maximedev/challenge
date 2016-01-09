@@ -33,11 +33,11 @@
         $log.debug(vm.signupUser);
         $auth.signup(vm.signupUser)
           .then(function(){
-            toastr.success('account successfully created !!');
+            toastr.success('Utilisateur enregistré !!');
             vm.selectedTab = 0;
           })
           .catch(function(){
-            toastr.error('something wrong happen');
+            toastr.error('Erreur lors de l\'inscrisption');
           })
       }
     };

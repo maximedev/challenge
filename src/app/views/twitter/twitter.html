@@ -9,9 +9,7 @@
   </md-button>
 </md-data-table-toolbar>
 <md-content >
-    <md-list>
       <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | filter:{theme:tweet.selectedTheme}| orderBy:'-createdAt'">
-
         <div>
           <div>
           <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
@@ -37,14 +35,9 @@
           <p>{{commentaire.message}}</p>
           </div>
         </div>
-
-
-
-
-
-
     <md-divider>
     </md-divider>
+        <br/>
       </md-list-item>
     </md-list>
 </md-content>

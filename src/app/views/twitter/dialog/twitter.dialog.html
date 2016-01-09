@@ -34,8 +34,9 @@
           <md-button type="button" ng-click="dialog.choisirPhotoTweet()">
             <md-icon md-font-icon="ion-plus-round" ></md-icon>
           </md-button>
+          <h2>{{ dialog.title }}</h2>
         </div>
-        <md-input-container class="md-block">
+        <md-input-container class="md-block" >
           <canvas id="canvasPhotoTweet"></canvas>
           <input required aria-label="trigger"  name="triggerInput" type="file" id="triggerInput" onchange="angular.element(this).scope().dialog.setFileTweet(this)" accept="image/*" capture >
         </md-input-container>

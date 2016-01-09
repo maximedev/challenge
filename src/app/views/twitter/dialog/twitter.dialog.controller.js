@@ -23,6 +23,7 @@
     vm.submitForm = submitForm;
     vm.close = close;
     vm.photoPresent = false ;
+
     function submitForm(tweetToPost){
       $log.debug(tweetToPost);
       if(vm.tweetForm.$valid) {
@@ -48,7 +49,6 @@
     };
 
     vm.setFileTweet = function(element) {
-
       vm.currentFile = element.files[0];
       var reader = new FileReader();
 
@@ -88,7 +88,6 @@
 
       image.src = src;
     }
-
   }
 
 })();
