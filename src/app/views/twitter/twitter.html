@@ -8,9 +8,10 @@
     <md-icon md-font-icon="ion-refresh" ></md-icon>
   </md-button>
 </md-data-table-toolbar>
-<md-content>
+<md-content >
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="tw in tweet.list | filter:{theme:tweet.selectedTheme}| orderBy:'-createdAt'">
+
         <div>
           <div>
           <img ng-src="{{tweet.getPhoto(tw.creatorId)}}" class="md-avatar" alt="{{tweet.getUserName(tw.creatorId)}}" />
@@ -19,12 +20,31 @@
           <div class="date-tweet">{{tw.createdAt | date:'dd/MM/yyyy HH:mm'}}</div>
 
         </div>
-        <div class="md-list-item-text" layout="column" >
+        <div class="md-list-item-text">
           <h>{{tw.theme}}</h>
           <p>{{tw.message}}</p>
-          <img ng-src="{{tw.image}}" ng-show="tweet.imagePresente()" class="img-tweet" />
+          <img ng-src="{{tw.image}}"  class="img-tweet" />
           <br/>
+
+        <md-button class="md-icon-button" ng-click="tweet.affichage($index)">
+        <md-icon md-font-icon="ion-person-stalker"  ></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="tweet.creationDialogComment($event,tw.id)">
+        <md-icon md-font-icon="ion-reply" ></md-icon>
+        </md-button>
+          <div ng-show="{{tw.afficherComment}}" class="md-list-item-text" layout="column"  ng-repeat="commentaire in tweet.getComments(tw.id)| orderBy:'-createdAt'" >
+          <h>{{tweet.getUserName(commentaire.creatorId)}} le {{commentaire.createdAt | date:'dd/MM/yyyy HH:mm'}}</h>
+          <p>{{commentaire.message}}</p>
+          </div> 
         </div>
+     
+            
+
+              
+
+
+    <md-divider>
+    </md-divider>
       </md-list-item>
     </md-list>
 </md-content>

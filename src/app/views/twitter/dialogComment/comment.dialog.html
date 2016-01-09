@@ -1,0 +1,36 @@
+<md-dialog aria-label="{{ commentDialog.title }}"  ng-cloak>
+  <form name="commentDialog.commentForm" ng-submit="commentDialog.submitForm(commentDialog.comment)" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{ commentDialog.title }}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Fermer la fenêtre"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div class="md-dialog-content">
+        <div class="md-actions" layout="row">
+          <md-input-container class="md-block">
+            <label>Commentaire</label>
+            <input md-maxlength="140" required name="message" ng-model="commentDialog.comment.message">
+            <div ng-messages="commentDialog.commentForm.message.$error">
+              <div ng-message="required">Un commentaire est obligatoire.</div>
+              <div ng-message="md-maxlength">le commentaire ne doit pas dépasser les 140 caractères.</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button type="submit" md-autofocus>
+        {{ commentDialog.buttonValiderLabel }}
+      </md-button>
+      <span flex></span>
+      <md-button type="button" ng-click="commentDialog.close()">
+        {{ commentDialog.buttonQuitterLabel }}
+      </md-button>
+    </div>
+  </form>
+</md-dialog>

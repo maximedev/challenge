@@ -7,6 +7,7 @@ var ensureAuthenticated = require('./lib/utils').EnsureAuthenticated;
 
 var mockPath = './gulp/server/mockData/user.json';
 var mockTweet = './gulp/server/mockData/tweet.json';
+var mockComment = './gulp/server/mockData/comment.json';
 
 
 
@@ -55,6 +56,34 @@ module.exports = function(server){
       });
   });
 
+  server.get('/get/user', function(req, res){
+   var emailuser = req.param('email') ;
+   var user;
+   console.log(emailuser);
+    fs.readJson(mockPath)
+      .then((file)=>{
+         user = _.findWhere(file,{
+          email: emailuser
+        });
+
+        
+        if(user){
+          console.log(user);
+         return user ;
+        }
+        return null;
+      })
+      .then(function(){
+          res.json({
+            token: jwt.encode(user,config.TOKEN_SECRET),
+            userData : user 
+          });
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+  });
+
   server.get('/auth/me',ensureAuthenticated, function(req, res){
     res.json(req.user);
   });
@@ -81,7 +110,6 @@ module.exports = function(server){
      var dataToSend =[];
       fs.readJson(mockTweet)
         .then(function(data){
-      
         dataToSend = data ;
          return data ;
       })        
@@ -89,6 +117,42 @@ module.exports = function(server){
         res.json({
           token: jwt.encode(dataToSend,config.TOKEN_SECRET),
           tweets:dataToSend
+        });
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+  });
+
+  server.post('/add/comment', function(req, res){
+    console.log('Ajout d\'un tweet');
+    fs.readJson(mockComment)
+      .then(function(data){
+        req.body.id = data.length;
+        data.push(req.body);
+        return fs.outputJson(mockComment,data)
+      })
+      .then(function(){
+        res.json({
+          token: jwt.encode(req.body,config.TOKEN_SECRET)
+        });
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+  });
+
+    server.get('/get/comment',ensureAuthenticated, function(req, res){
+     var dataToSend =[];
+      fs.readJson(mockComment)
+        .then(function(data){
+        dataToSend = data ;
+         return data ;
+      })        
+      .then(function(){
+        res.json({
+          token: jwt.encode(dataToSend,config.TOKEN_SECRET),
+          comment:dataToSend
         });
       })
       .catch(function(err){

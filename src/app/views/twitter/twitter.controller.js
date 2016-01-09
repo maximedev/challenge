@@ -6,23 +6,11 @@
     .controller('TweetController', TweetController);
 
       /** @ngInject */
- function TweetController(themeSelected, Tweet, user, $mdDialog, toastr, $log) {
+ function TweetController(themeSelected, Tweet,Comment, user, $mdDialog, toastr, $log) {
 	var vm = this;
 
   vm.selectedTheme = themeSelected.value;
 
-	/*vm.submitForm = function (tweet){
-		$log.debug("Envoi d'un message");
-		tweet.creatorId = user.me.id;
-    tweet.createdAt = new Date().getTime();
-    tweet.theme = "Informatique";
-    Tweet.createTweet(tweet).then(
-        function(response){
-          $log.debug(response.data);
-          vm.list.push(response.data);
-        }
-      );
-    }*/
 
   vm.creationDialogTweet = function(event){
     $log.debug("Appel dialog tweet");
@@ -48,10 +36,36 @@
        })
    };
 
+  vm.creationDialogComment = function(event,id){
+     return $mdDialog.show({
+         templateUrl: 'app/views/twitter/dialogComment/comment.dialog.html',
+         controller: 'CommentDialogController',
+         controllerAs: 'commentDialog',
+         targetEvent: event,
+         locals: {
+           options:{
+             title: 'Publier un nouveau commentaire',
+             buttonValiderLabel: 'Publier',
+             buttonQuitterLabel: 'Annuler',
+             idTweet: id
+           }
+         }
+       })
+       .then(function(createdComment){
+         toastr.info('Commentaire envoyé !');
+         Comment.createComment(createdComment).then(
+            function(){
+              vm.getAllComment();
+          });
+       })
+   };
+
   vm.init = function (){
     $log.debug("init");
 
     vm.getAllTweet();
+
+    vm.getAllComment();
 
     var promise = user.refreshAll();
     promise.then(function(data){
@@ -60,6 +74,8 @@
     })
 
   };
+
+
 
   vm.getPhoto = function(id){
     for( var i in vm.listuser){
@@ -77,21 +93,48 @@
     }
   };
 
+  vm.getComments = function(id){
+    var listeComm = [];
+    for( var i in vm.listCommentaire){
+      if(vm.listCommentaire[i].idTweet === id){
+          listeComm.push(vm.listCommentaire[i])
+      }
+    }
+    return listeComm ;
+  };
+
+
 
   vm.getAllTweet = function(){
     var promise = Tweet.getAllTweets();
     promise.then(function(obj){
-      $log.debug(obj.data.tweets);
       vm.list = obj.data.tweets;
+      for( var i in  vm.list){
+        vm.list[i].afficherComment = true ;
+      }
+
+    });
+  }
+
+  vm.getAllComment = function(){
+    var promise = Comment.getAllComment();
+    promise.then(function(obj){
+      vm.listCommentaire = obj.data.comment;
     });
   }
 
   vm.imagePresente = function(tweet){
     return tweet.image;
   }
+
+  vm.affichage = function (idList){
+    $log.debug("affichage");
+    vm.list[idList].commentAffichage = !vm.list[idList].commentAffichage ;
+  }
+
+
 //on initialise la page
   vm.init();
-
 }
 
 })();
