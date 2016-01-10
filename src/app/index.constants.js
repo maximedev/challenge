@@ -8,12 +8,12 @@
     .constant('moment', moment)
     .constant('config', {
       auth: {
-        baseUrl: 'http://localhost:3000',
+        baseUrl: 'http://176.189.151.200:80',
         loginUrl : '/auth/signin',
         signupUrl :'/auth/signup'
       },
       api: {
-        basePath: 'http://localhost:3000'
+        basePath: 'http://176.189.151.200:80'
       },
       listsCount:{}
     })
