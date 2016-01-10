@@ -16,14 +16,14 @@
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Nom utilisateur</label>
-                <input required type="text" md-maxlength="30" name="username" ng-model="profile.user.username">
+                <input required type="text" md-maxlength="30" name="username" ng-model="profile.user.username" >
                 <div ng-messages="profile.editForm.username.$error">
                     <div ng-message="required">Le nom est obligatoire.</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Mot de passe</label>
-                <input required name="password" type="password" ng-model="profile.user.password">
+                <input required name="password" type="password" ng-model="profile.user.password" ng-value="">
                 <div ng-messages="profile.editForm.password.$error">
                     <div ng-message="required">Le mot de passe est obligatoire.</div>
                 </div>
@@ -31,7 +31,7 @@
             <md-input-container class="md-block">
                 <label>Confirmation de votre mot de passe</label>
                 <input required name="password" type="password" ng-model="profile.user.confirmPassword"
-                       compare-to="profile.user.password">
+                       compare-to="profile.user.password" ng-value="">
                 <div ng-messages="profile.editForm.password.$error">
                     <div ng-message="required">La confirmation du mot de passe est obligatoire.</div>
                     <div ng-message="compareTo">Le mot de passe n'est pas identique</div>

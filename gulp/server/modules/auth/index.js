@@ -57,27 +57,17 @@ module.exports = function(server){
   });
 
   server.get('/get/user', function(req, res){
-   var emailuser = req.param('email') ;
-   var user;
-   console.log(emailuser);
-    fs.readJson(mockPath)
-      .then((file)=>{
-         user = _.findWhere(file,{
-          email: emailuser
-        });
-
-        
-        if(user){
-          console.log(user);
-         return user ;
-        }
-        return null;
-      })
+     var dataToSend =[];
+      fs.readJson(mockPath)
+        .then(function(data){
+        dataToSend = data ;
+         return data ;
+      })        
       .then(function(){
-          res.json({
-            token: jwt.encode(user,config.TOKEN_SECRET),
-            userData : user 
-          });
+        res.json({
+          token: jwt.encode(dataToSend,config.TOKEN_SECRET),
+          user:dataToSend
+        });
       })
       .catch(function(err){
         console.log(err);

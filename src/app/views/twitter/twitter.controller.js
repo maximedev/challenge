@@ -6,7 +6,7 @@
         .controller('TweetController', TweetController);
 
     /** @ngInject */
-    function TweetController(themeSelected, Tweet, Comment, user, $mdDialog, toastr, $log) {
+    function TweetController(themeSelected, Tweet, Comment, user, $mdDialog, toastr, $log,$http,config) {
         var vm = this;
 
         vm.selectedTheme = themeSelected.value;
@@ -31,7 +31,7 @@
                     toastr.info('Tweet envoyé !');
                     Tweet.createTweet(createdDTweet).then(
                         function () {
-                            vm.getAllTweet();
+                            vm.init();
                         });
                 })
         };
@@ -67,12 +67,15 @@
 
             vm.getAllComment();
 
-            var promise = user.refreshAll();
-            promise.then(function (data) {
+            var promise = $http({
+                method: 'GET',
+                url: config.api.basePath + "/get/user"
+            });
+            
+            promise.then(function(data){
                 $log.debug(data);
-                vm.listuser = data;
+            vm.listuser = data.data.user ;
             })
-
         };
 
 

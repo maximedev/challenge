@@ -6,21 +6,31 @@
         .controller('ProfileController', ProfileController);
 
     /** @ngInject */
-    function ProfileController($mdSidenav, $scope, $auth, $state, $log, user, $mdDialog, toastr, $document) {
+    function ProfileController($mdSidenav, $scope, $auth, $state, $log, user, $mdDialog, toastr, $document,$crypthmac) {
         var vm = this;
-        vm.user = user.me;
+        
 
         vm.updateUser = function (userdata) {
             if (vm.editForm.$valid) {
-                //$log.debug(userdata);
 
-                var promise;
-                promise = user.update(userdata.id, userdata);
+                    var encryptPassword = $crypthmac.encrypt(userdata.password,"");
+                    var encryptConfirmPassword = $crypthmac.encrypt(userdata.confirmPassword,"");
+                    userdata.password = encryptPassword;
+                    userdata.confirmPassword = encryptConfirmPassword;
+
+                    var promise;
+                    promise = user.update(userdata.id, userdata);
                 return promise.then(function (data) {
                     toastr.info('updated !!!! ' + userdata.id)
                     $log.debug(data);
                 })
             }
+        }
+
+        vm.init = function(){
+            vm.user = {};
+            vm.user.username = user.me.username;
+            vm.user.email = user.me.email;
         }
 
         //Ajout de la photo
@@ -71,6 +81,9 @@
 
             image.src = src;
         }
+
+
+    vm.init();
 
     }
 })();
