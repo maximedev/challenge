@@ -4,7 +4,7 @@
 (function(){
   'use strict';
 
-  angular.module('formationAngularLyon')
+  angular.module('ChallengeICDC')
     .controller('TwitterDialogController', TwitterDialogController);
 
   /** @ngInject */
@@ -76,9 +76,12 @@
           image.height = MAX_HEIGHT;
         }
         var ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         canvas.width = image.width;
         canvas.height = image.height;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         ctx.drawImage(image, 0, 0, image.width, image.height);
         $log.debug(ctx);
         $log.debug(ctx.dataURL);

@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('formationAngularLyon')
+  angular.module('ChallengeICDC')
     .directive("compareTo", compareTo);
 
   function compareTo() {
