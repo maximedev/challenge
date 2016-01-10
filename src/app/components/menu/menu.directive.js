@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('formationAngularLyon')
+        .module('ChallengeICDC')
         .directive('triMenu', triMenuDirective);
 
     /* @ngInject */

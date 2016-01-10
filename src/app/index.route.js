@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('formationAngularLyon')
+    .module('ChallengeICDC')
     .config(routerConfig);
 
   /** @ngInject */
@@ -66,30 +66,6 @@
           }
         }
       })
-      .state('twitterRH', {
-        url: '/twitter/RessourcesHumaines',
-        parent: 'main',
-        templateUrl: 'app/views/twitter/twitter.html',
-        controller: 'TweetController',
-        controllerAs: 'tweet',
-        resolve: {
-          themeSelected: function () {
-            return {value: 'Ressources Humaines'};
-          }
-        }
-      })
-      .state('twitterChallengeICDC', {
-        url: '/twitter/ChallengeICDC',
-        parent: 'main',
-        templateUrl: 'app/views/twitter/twitter.html',
-        controller: 'TweetController',
-        controllerAs: 'tweet',
-        resolve: {
-          themeSelected: function () {
-            return {value: 'Challenge ICDC'};
-          }
-        }
-      })
       .state('twitterDeveloppement', {
         url: '/twitter/Developpement',
         parent: 'main',
@@ -113,6 +89,40 @@
             return {value: 'Projets'};
           }
         }
+      })
+      .state('twitterChallengeICDC', {
+        url: '/twitter/ChallengeICDC',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected: function () {
+            return {value: 'Challenge ICDC'};
+          }
+        }
+      })
+      .state('twitterLoisirs', {
+        url: '/twitter/Loisirs',
+        parent: 'main',
+        templateUrl: 'app/views/twitter/twitter.html',
+        controller: 'TweetController',
+        controllerAs: 'tweet',
+        resolve: {
+          themeSelected: function () {
+            return {value: 'Loisirs'};
+          }
+        }
+      })
+      .state('profile', {
+        url: '/profile',
+        parent: 'main',
+        resolve: {
+          loginRequired: loginRequired
+        },
+        templateUrl: 'app/views/profile/profile.html',
+        controller: 'ProfileController',
+        controllerAs: 'profile'
       })
       .state('chart', {
         url: '/chart',

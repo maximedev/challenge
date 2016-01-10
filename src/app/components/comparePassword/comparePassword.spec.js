@@ -1,7 +1,7 @@
 describe('component: compareTo', function() {
   var element, scope;
 
-  beforeEach(module('formationAngularLyon'));
+  beforeEach(module('ChallengeICDC'));
 
   beforeEach(inject(function($rootScope, $compile) {
     scope = $rootScope.$new();

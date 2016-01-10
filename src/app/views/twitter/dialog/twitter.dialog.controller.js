@@ -4,7 +4,7 @@
 (function(){
   'use strict';
 
-  angular.module('formationAngularLyon')
+  angular.module('ChallengeICDC')
     .controller('TwitterDialogController', TwitterDialogController);
 
   /** @ngInject */
@@ -16,20 +16,23 @@
     vm.buttonQuitterLabel = options.buttonQuitterLabel;
 
     vm.themeSelect = '';
-    vm.themes = ('Vie de l\'entreprise;Ressources Humaines;Challenge ICDC;Développement;Projets')
+    vm.themes = ('Vie de l\'entreprise;Développement;Projets;Challenge ICDC;Loisirs')
       .split(';')
       .map(function (theme) { return { label: theme };});
 
     vm.submitForm = submitForm;
     vm.close = close;
+    vm.photoPresent = false ;
 
     function submitForm(tweetToPost){
       $log.debug(tweetToPost);
       if(vm.tweetForm.$valid) {
         tweetToPost.createdAt = new Date().getTime();
         tweetToPost.creatorId = user.me.id;
+        if(vm.photoPresent){
         var canvas = $document[0].getElementById('canvasPhotoTweet');
         tweetToPost.image = canvas.toDataURL();
+		}
         return $mdDialog.hide(tweetToPost);
       }
     }
@@ -46,7 +49,6 @@
     };
 
     vm.setFileTweet = function(element) {
-
       vm.currentFile = element.files[0];
       var reader = new FileReader();
 
@@ -54,11 +56,12 @@
         vm.render(event.target.result);
       };
 
+      vm.photoPresent = true ;
       // when the file is read it triggers the onload event above.
       reader.readAsDataURL(element.files[0]);
     };
 
-    var MAX_HEIGHT = 80;
+    var MAX_HEIGHT = 100;
 
     vm.render = function(src){
       var image = new Image();
@@ -73,9 +76,12 @@
           image.height = MAX_HEIGHT;
         }
         var ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         canvas.width = image.width;
         canvas.height = image.height;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         ctx.drawImage(image, 0, 0, image.width, image.height);
         $log.debug(ctx);
         $log.debug(ctx.dataURL);
@@ -85,7 +91,6 @@
 
       image.src = src;
     }
-
   }
 
 })();

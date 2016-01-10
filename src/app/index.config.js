@@ -2,13 +2,17 @@
   'use strict';
 
   angular
-    .module('formationAngularLyon')
+    .module('ChallengeICDC')
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, triMenuProvider, DSProvider, DSHttpAdapterProvider, config, $authProvider) {
+  function config($logProvider, toastrConfig, triMenuProvider, DSProvider, DSHttpAdapterProvider, config, $authProvider,$crypthmacProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
+
+    //init cryptage
+    $crypthmacProvider.setCryptoSecret('jfoiwjfwoifje83');
+
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;
@@ -25,7 +29,7 @@
 
 
     triMenuProvider.addMenu({
-      name: 'Fil d\'actualité',
+      name: 'Fil d\'actualités',
       icon: 'ion-home',
       type: 'link',
       state: 'twitter'
@@ -39,15 +43,6 @@
         name: 'Vie de l\'entreprise',
         type: 'link',
         state: 'twitterVieEntreprise'
-      },{
-        name: 'Ressources Humaines',
-        type: 'link',
-        state: 'twitterRH'
-      },
-      {
-        name: 'Challenge ICDC',
-        type: 'link',
-        state: 'twitterChallengeICDC'
       },
       {
         name: 'Développement',
@@ -58,8 +53,25 @@
         name: 'Projets',
         type: 'link',
         state: 'twitterProjets'
+      },
+      {
+        name: 'Challenge ICDC',
+        type: 'link',
+        state: 'twitterChallengeICDC'
+      },
+      {
+        name: 'Loisirs',
+        type: 'link',
+        state: 'twitterLoisirs'
       }
       ]
+    });
+
+    triMenuProvider.addMenu({
+      name: 'Mon Profil',
+      icon: 'ion-person',
+      type: 'link',
+      state: 'profile'
     });
   }
 

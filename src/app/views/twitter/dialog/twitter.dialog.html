@@ -35,7 +35,7 @@
             <md-icon md-font-icon="ion-plus-round" ></md-icon>
           </md-button>
         </div>
-        <md-input-container class="md-block">
+        <md-input-container class="md-block" ng-show="dialog.photoPresent">
           <canvas id="canvasPhotoTweet"></canvas>
           <input required aria-label="trigger"  name="triggerInput" type="file" id="triggerInput" onchange="angular.element(this).scope().dialog.setFileTweet(this)" accept="image/*" capture >
         </md-input-container>
