@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('formationAngularLyon')
+    .module('ChallengeICDC')
     .constant('malarkey', malarkey)
     .constant('moment', moment)
     .constant('config', {

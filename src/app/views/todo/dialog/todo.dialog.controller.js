@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('formationAngularLyon')
+  angular.module('ChallengeICDC')
     .controller('TodoDialogController', TodoDialogController);
 
   /** @ngInject */

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('formationAngularLyon')
+    .module('ChallengeICDC')
     .config(routerConfig);
 
   /** @ngInject */
@@ -113,6 +113,16 @@
             return {value: 'Loisirs'};
           }
         }
+      })
+      .state('profile', {
+        url: '/profile',
+        parent: 'main',
+        resolve: {
+          loginRequired: loginRequired
+        },
+        templateUrl: 'app/views/profile/profile.html',
+        controller: 'ProfileController',
+        controllerAs: 'profile'
       })
       .state('chart', {
         url: '/chart',

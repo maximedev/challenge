@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('formationAngularLyon')
+    .module('ChallengeICDC')
     .config(config);
 
   /** @ngInject */
@@ -29,6 +29,13 @@
       icon: 'ion-home',
       type: 'link',
       state: 'twitter'
+    });
+
+    triMenuProvider.addMenu({
+      name: 'Profile',
+      icon: 'ion-person',
+      type: 'link',
+      state: 'profile'
     });
 
     triMenuProvider.addMenu({

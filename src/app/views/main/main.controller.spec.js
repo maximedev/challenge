@@ -6,7 +6,7 @@
     var $state;
     var $auth;
 
-    beforeEach(module('formationAngularLyon'));
+    beforeEach(module('ChallengeICDC'));
     beforeEach(inject(function(_$controller_, _$state_, _$auth_) {
       vm = _$controller_('MainController');
       $state = _$state_;
