@@ -6,9 +6,13 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, triMenuProvider, DSProvider, DSHttpAdapterProvider, config, $authProvider) {
+  function config($logProvider, toastrConfig, triMenuProvider, DSProvider, DSHttpAdapterProvider, config, $authProvider,$crypthmacProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
+
+    //init cryptage
+    $crypthmacProvider.setCryptoSecret('jfoiwjfwoifje83');
+     
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;

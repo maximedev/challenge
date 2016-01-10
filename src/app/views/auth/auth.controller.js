@@ -6,13 +6,20 @@
     .controller('AuthController', AuthController);
 
   /** @ngInject */
-  function AuthController($scope,$auth,$state,$http,$log,$document,toastr,user) {
+  function AuthController($scope,$auth,$state,$http,$log,$document,toastr,user,$crypthmac) {
     var vm = this;
     vm.selectedTab = 0;
 
     vm.signin = function(){
       if(vm.signinForm.$valid) {
-        $auth.login(vm.signinUser)
+
+        var dataToSend ={};
+
+        var encryptPassword = $crypthmac.encrypt(vm.signinUser.password,"");
+        dataToSend.email =  vm.signinUser.email;
+        dataToSend.password = encryptPassword;
+
+        $auth.login(dataToSend)
           .then(function () {
             return user.getMe()
           })
@@ -24,14 +31,25 @@
           })
       }
     };
-
+    
     vm.signup = function(){
       if(vm.signupForm.$valid){
-      var canvas = $document[0].getElementById('canvasPhoto');
-        vm.signupUser.image = canvas.toDataURL();
 
-        $log.debug(vm.signupUser);
-        $auth.signup(vm.signupUser)
+        var dataToSend ={};
+
+        var encryptPassword = $crypthmac.encrypt(vm.signupUser.password,"");
+        var encryptConfirmPassword = $crypthmac.encrypt(vm.signupUser.confirmPassword,"");
+
+        dataToSend.password = encryptPassword ;
+        dataToSend.confirmPassword = encryptConfirmPassword ;
+
+        var canvas = $document[0].getElementById('canvasPhoto');
+        dataToSend.image = canvas.toDataURL();
+        dataToSend.username = vm.signupUser.username ;
+        dataToSend.email = vm.signupUser.email ;
+
+        $log.debug(dataToSend);
+        $auth.signup(dataToSend)
           .then(function(){
             toastr.success('Utilisateur enregistré !!');
             vm.selectedTab = 0;

@@ -13,7 +13,8 @@
       'md.data.table',
       'js-data',
       'satellizer',
-      'chart.js'
+      'chart.js',
+      'angular-hmac-sha512'
     ]);
 
 })();
