@@ -12,7 +12,7 @@
 
     //init cryptage
     $crypthmacProvider.setCryptoSecret('jfoiwjfwoifje83');
-     
+
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;
@@ -33,13 +33,6 @@
       icon: 'ion-home',
       type: 'link',
       state: 'twitter'
-    });
-
-    triMenuProvider.addMenu({
-      name: 'Profile',
-      icon: 'ion-person',
-      type: 'link',
-      state: 'profile'
     });
 
     triMenuProvider.addMenu({
@@ -72,6 +65,13 @@
         state: 'twitterLoisirs'
       }
       ]
+    });
+
+    triMenuProvider.addMenu({
+      name: 'Mon Profil',
+      icon: 'ion-person',
+      type: 'link',
+      state: 'profile'
     });
   }
 

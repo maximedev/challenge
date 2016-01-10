@@ -1,5 +1,5 @@
 <md-data-table-toolbar layout="row">
-    <h2 class="md-title">Edit Profile</h2>
+    <h2 class="md-title">Modification du profil</h2>
     <span flex></span>
 </md-data-table-toolbar>
 
@@ -38,8 +38,10 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block">
-                <canvas id="canvasPhoto" class="img-circle"></canvas>
-                <md-button ng-click="profile.choisirPhoto()" class="md-button md-ink-ripple"> Sélectionner une photo (2 Mo
+              <img id="image" class="img-circle"  alt="Image" ng-src="{{profile.user.image}}" ng-show="profile.user.image && !profile.changePhoto"
+                   layout-padding="2px"/>
+              <canvas id="canvasPhoto" class="img-circle" ng-show="!profile.user.image || profile.changePhoto"></canvas>
+                <md-button ng-click="profile.choisirPhoto()" class="md-button md-ink-ripple"> Modifier la photo (2 Mo
                     max)
                 </md-button>
                 <input required aria-label="trigger" name="triggerInput" type="file" id="triggerInput"
@@ -47,7 +49,7 @@
             </md-input-container>
             <div>
                 <md-button type="submit">
-                    Editer
+                    Modifier mon profil
                 </md-button>
             </div>
         </form>

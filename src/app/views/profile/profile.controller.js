@@ -8,29 +8,30 @@
     /** @ngInject */
     function ProfileController($mdSidenav, $scope, $auth, $state, $log, user, $mdDialog, toastr, $document,$crypthmac) {
         var vm = this;
-        
-
+        vm.changePhoto = false;
         vm.updateUser = function (userdata) {
-            if (vm.editForm.$valid) {
+          if (vm.editForm.$valid) {
 
-                    var encryptPassword = $crypthmac.encrypt(userdata.password,"");
-                    var encryptConfirmPassword = $crypthmac.encrypt(userdata.confirmPassword,"");
-                    userdata.password = encryptPassword;
-                    userdata.confirmPassword = encryptConfirmPassword;
+            var encryptPassword = $crypthmac.encrypt(userdata.password, "");
+            var encryptConfirmPassword = $crypthmac.encrypt(userdata.confirmPassword, "");
+            userdata.password = encryptPassword;
+            userdata.confirmPassword = encryptConfirmPassword;
 
-                    var promise;
-                    promise = user.update(userdata.id, userdata);
-                return promise.then(function (data) {
-                    toastr.info('updated !!!! ' + userdata.id)
-                    $log.debug(data);
-                })
-            }
+            var promise;
+            promise = user.update(userdata.id, userdata);
+            return promise.then(function (data) {
+              toastr.info('updated !!!! ' + userdata.id)
+              $log.debug(data);
+            })
+          }
         }
+        //imageObj.src = 'assets/images/default128.png';
 
         vm.init = function(){
             vm.user = {};
             vm.user.username = user.me.username;
             vm.user.email = user.me.email;
+            vm.user.image = user.me.image;
         }
 
         //Ajout de la photo
@@ -42,6 +43,7 @@
 
         vm.setFile = function (element) {
 
+            vm.changePhoto = true;
             vm.currentFile = element.files[0];
             var reader = new FileReader();
 
